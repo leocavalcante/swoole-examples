@@ -13,8 +13,12 @@ $server = new Server('127.0.0.1', 3000);
 $server->set([Constant::OPTION_WORKER_NUM => 1]);
 
 $server->on('open', static function (Server $server, Request $request): void {
-    $server->tick(1000, static function () use ($server, $request): void {
-        $server->push($request->fd, time());
+    $server->tick(200, static function () use ($server, $request): void {
+        $server->push($request->fd, 'Tick #1 ' . time());
+    });
+
+    $server->tick(200, static function () use ($server, $request): void {
+        $server->push($request->fd, 'Tick #2 ' . time());
     });
 });
 

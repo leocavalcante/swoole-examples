@@ -10,8 +10,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 function on_frame(Client $client, Frame $frame): void
 {
-    echo "$frame->data\n";
-    $client->push($frame->data);
+    $simulate_work = random_int(1, 5);
+
+    Coroutine::sleep($simulate_work);
+
+    echo time() . " (client) x $frame->data (server) :: $simulate_work\n";
 }
 
 Coroutine\run(static function (): void {
@@ -20,7 +23,9 @@ Coroutine\run(static function (): void {
 
     while (true) {
         if ($frame = $client->recv()) {
-            on_frame($client, $frame);
+            Coroutine::create(static function() use ($client, $frame): void {
+                on_frame($client, $frame);
+            });
         }
     }
 });
