@@ -1,0 +1,16 @@
+{
+    "name": "leocavalcante/swoole-examples",
+    "description": "Learning and teaching Swoole by examples",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "leocavalcante",
+            "email": "lc@leocavalcante.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "swoole/ide-helper": "^4.6"
+    }
+}
