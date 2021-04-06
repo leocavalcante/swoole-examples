@@ -3,6 +3,7 @@
 namespace Example\TaskWorkers;
 
 use Swoole\Constant;
+use Swoole\Coroutine;
 use Swoole\Server;
 
 $wid = -1;
@@ -22,7 +23,7 @@ $server->on('workerStart', static function(Server $server, int $worker_id) use (
             foreach ($subscribers as $fd) {
                 $server->send($fd, time() . PHP_EOL);
             }
-            sleep(1);
+            Coroutine::sleep(1);
         }
     }
 });
