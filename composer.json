@@ -10,7 +10,13 @@
         }
     ],
     "minimum-stability": "stable",
+    "require": {
+        "ext-curl": "*",
+        "ext-swoole": "^4.6",
+        "guzzlehttp/guzzle": "^7.3"
+    },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "swoole/ide-helper": "^4.6"
     }
 }
