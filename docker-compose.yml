@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  examples:
+    container_name: swoole_examples
+    image: phpswoole/swoole:4.6-php8.0
+    entrypoint: bash
+    working_dir: /examples
+    volumes:
+    - ./:/examples
+    ports:
+    - 9501:9501
